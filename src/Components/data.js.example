@@ -1,0 +1,17 @@
+export const model = "H6008";
+export const bulbs = {
+  lamp1: {
+    name: "Lampacina",
+    device: "7F:E4:60:74:F4:28:67:38",
+  },
+  lamp2: {
+    name: "Garage-lamp",
+    device: "91:FD:60:74:F4:2B:FA:9A",
+  },
+  lamp3: {
+    name: "Lampadone",
+    device: "1C:F6:60:74:F4:28:67:26",
+  }
+}
+
+export const apiKey = "apikey";

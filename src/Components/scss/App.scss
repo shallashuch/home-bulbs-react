@@ -1,0 +1,59 @@
+@import "./colorPicker";
+@import "./slider";
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(17, 57,	70, 0.2);
+  & .room-container {
+    display: flex;
+    & .room-item {
+      padding: 20px;
+      border: 2px solid #BCA37F;
+      border-bottom: 0px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 20px;
+      color: #113946;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  & .folder-container {
+    background-color: #fff2d8;
+    border: 2px solid #bca37f;
+    border-radius: 20px;
+    padding: 30px;
+    width: 1000px;
+    & .firstRow-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 50px 0px;
+      & .lampButton-container {
+        display: flex;
+        margin-left: 100px;
+        & .button-light {
+          border: 2px solid #EAD7BB;
+          padding: 20px;
+          border-radius:50%;
+          & svg {
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+            color: #113946;
+          }
+        }
+      }
+    }
+    & .settingLights-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 100px 0px 50px 0px;
+    }
+  }
+}

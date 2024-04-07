@@ -1,0 +1,158 @@
+.colorPicker {
+  background-color: #ead7bb;
+  padding: 30px 20px;
+  width: fit-content;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+
+  & #paletteIcon {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    color: #113946;
+  }
+  & .Colors {
+    margin-top: 30px;
+    height: 130px;
+    overflow: scroll;
+
+    & .colorChoice-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto auto;
+      row-gap: 20px;
+      column-gap: 20px;
+      & .single-color-container {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        border: 1px solid #113946;
+
+        &:active {
+          border: 1px solid #bca37f;
+        }
+      }
+      & #zero {
+        background-color: #ffffff;
+      }
+      & #one {
+        background-color: #f8fcfb;
+      }
+      & #two {
+        background-color: #fffbeb;
+      }
+      & #three {
+        background-color: #fffdcb;
+      }
+      & #four {
+        background-color: #fffc9b;
+      }
+      & #five {
+        background-color: #f5dd61;
+      }
+      & #six {
+        background-color: #ffc374;
+      }
+      & #seven {
+        background-color: #ffa33c;
+      }
+      & #eight {
+        background-color: #ec8f5e;
+      }
+      & #nine {
+        background-color: #ebc49f;
+      }
+      & #ten {
+        background-color: #e5c287;
+      }
+      & #eleven {
+        background-color: #c6a969;
+      }
+      & #twelve {
+        background-color: #ffe6e6;
+      }
+      & #thirteen {
+        background-color: #ffbe98;
+      }
+      & #fourteen {
+        background-color: #ea906c;
+      }
+      & #fifteen {
+        background-color: #ffc0d9;
+      }
+      & #sixteen {
+        background-color: #fc819e;
+      }
+      & #seventeen {
+        background-color: #ff90bc;
+      }
+      & #eighteen {
+        background-color: #9f70fd;
+      }
+      & #nineteen {
+        background-color: #7f27ff;
+      }
+      & #twenty {
+        background-color: #492e87;
+      }
+      & #twentyone {
+        background-color: #ff6868;
+      }
+      & #twentytwo {
+        background-color: #bf3131;
+      }
+      & #twentythree {
+        background-color: #9a031e;
+      }
+      & #twentyfour {
+        background-color: #c5ebaa;
+      }
+      & #twentyfive {
+        background-color: #79ac78;
+      }
+      & #twentysix {
+        background-color: #294b29;
+      }
+      & #twentyseven {
+        background-color: #c8ffe0;
+      }
+      & #twentyeight {
+        background-color: #96e9c6;
+      }
+      & #twentynine {
+        background-color: #15f5ba;
+      }
+      & #thirty {
+        background-color: #9ad0c2;
+      }
+      & #thirtyone {
+        background-color: #2d9596;
+      }
+      & #thirtytwo {
+        background-color: #265073;
+      }
+      & #thirtythree {
+        background-color: #67c6e3;
+      }
+      & #thirtyfour {
+        background-color: #378ce7;
+      }
+      & #thirtyfive {
+        background-color: #5356ff;
+      }
+      & #thirtysix {
+        background-color: #dfa878;
+      }
+      & #thirtyseven {
+        background-color: #ecb159;
+      }
+      & #thirtyeight {
+        background-color: #b67352;
+      }
+    }
+  }
+}

@@ -1,0 +1,214 @@
+.colorPicker {
+  background-color: rgb(233, 231, 231);
+  padding: 30px 20px;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.colorPicker #paletteIcon {
+  height: 70px;
+  width: 70px;
+  text-align: center;
+}
+.colorPicker .Colors {
+  margin-top: 30px;
+  display: none;
+}
+.colorPicker .Colors .colorChoice-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.colorPicker .Colors .colorChoice-container .single-color-container {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.colorPicker .Colors .colorChoice-container .single-color-container:active {
+  border: 1px solid rgb(232, 237, 226);
+}
+.colorPicker .Colors .colorChoice-container #zero {
+  background-color: #FFFFFF;
+}
+.colorPicker .Colors .colorChoice-container #one {
+  background-color: #F8FCFB;
+}
+.colorPicker .Colors .colorChoice-container #two {
+  background-color: #FFFBEB;
+}
+.colorPicker .Colors .colorChoice-container #three {
+  background-color: #FFFDCB;
+}
+.colorPicker .Colors .colorChoice-container #four {
+  background-color: #FFFC9B;
+}
+.colorPicker .Colors .colorChoice-container #five {
+  background-color: #F5DD61;
+}
+.colorPicker .Colors .colorChoice-container #six {
+  background-color: #FFC374;
+}
+.colorPicker .Colors .colorChoice-container #seven {
+  background-color: #FFA33C;
+}
+.colorPicker .Colors .colorChoice-container #eight {
+  background-color: #EC8F5E;
+}
+.colorPicker .Colors .colorChoice-container #nine {
+  background-color: #EBC49F;
+}
+.colorPicker .Colors .colorChoice-container #ten {
+  background-color: #E5C287;
+}
+.colorPicker .Colors .colorChoice-container #eleven {
+  background-color: #C6A969;
+}
+.colorPicker .Colors .colorChoice-container #twelve {
+  background-color: #FFE6E6;
+}
+.colorPicker .Colors .colorChoice-container #thirteen {
+  background-color: #FFBE98;
+}
+.colorPicker .Colors .colorChoice-container #fourteen {
+  background-color: #EA906C;
+}
+.colorPicker .Colors .colorChoice-container #fifteen {
+  background-color: #FFC0D9;
+}
+.colorPicker .Colors .colorChoice-container #sixteen {
+  background-color: #FC819E;
+}
+.colorPicker .Colors .colorChoice-container #seventeen {
+  background-color: #FF90BC;
+}
+.colorPicker .Colors .colorChoice-container #eighteen {
+  background-color: #9F70FD;
+}
+.colorPicker .Colors .colorChoice-container #nineteen {
+  background-color: #7F27FF;
+}
+.colorPicker .Colors .colorChoice-container #twenty {
+  background-color: #492E87;
+}
+.colorPicker .Colors .colorChoice-container #twentyone {
+  background-color: #FF6868;
+}
+.colorPicker .Colors .colorChoice-container #twentytwo {
+  background-color: #BF3131;
+}
+.colorPicker .Colors .colorChoice-container #twentythree {
+  background-color: #9A031E;
+}
+.colorPicker .Colors .colorChoice-container #twentyfour {
+  background-color: #C5EBAA;
+}
+.colorPicker .Colors .colorChoice-container #twentyfive {
+  background-color: #79AC78;
+}
+.colorPicker .Colors .colorChoice-container #twentysix {
+  background-color: #294B29;
+}
+.colorPicker .Colors .colorChoice-container #twentyseven {
+  background-color: #C8FFE0;
+}
+.colorPicker .Colors .colorChoice-container #twentyeight {
+  background-color: #96E9C6;
+}
+.colorPicker .Colors .colorChoice-container #twentynine {
+  background-color: #15F5BA;
+}
+.colorPicker .Colors .colorChoice-container #thirty {
+  background-color: #9AD0C2;
+}
+.colorPicker .Colors .colorChoice-container #thirtyone {
+  background-color: #2D9596;
+}
+.colorPicker .Colors .colorChoice-container #thirtytwo {
+  background-color: #265073;
+}
+.colorPicker .Colors .colorChoice-container #thirtythree {
+  background-color: #67C6E3;
+}
+.colorPicker .Colors .colorChoice-container #thirtyfour {
+  background-color: #378CE7;
+}
+.colorPicker .Colors .colorChoice-container #thirtyfive {
+  background-color: #5356FF;
+}
+.colorPicker .Colors .colorChoice-container #thirtysix {
+  background-color: #DFA878;
+}
+.colorPicker .Colors .colorChoice-container #thirtyseven {
+  background-color: #ECB159;
+}
+.colorPicker .Colors .colorChoice-container #thirtyeight {
+  background-color: #B67352;
+}
+.colorPicker .Colors.visible {
+  display: block;
+}
+.colorPicker .Colors.hidden {
+  display: none;
+}
+
+.Slider .brightness-Slider {
+  background-color: rgb(233, 231, 231);
+  padding: 30px 20px;
+  margin-left: 50px;
+  border-radius: 20px;
+  display: flex;
+}
+.Slider .brightness-Slider .icons {
+  height: 30px;
+  width: 30px;
+}
+.Slider .brightness-Slider #range {
+  cursor: pointer;
+  margin: 0px 10px;
+}
+.Slider .temperature-Slider {
+  background-color: rgb(233, 231, 231);
+  padding: 30px 20px;
+  margin-left: 50px;
+  margin-top: 50px;
+  border-radius: 20px;
+  display: flex;
+}
+.Slider .temperature-Slider .icons {
+  height: 30px;
+  width: 30px;
+}
+.Slider .temperature-Slider #range {
+  cursor: pointer;
+  margin: 0px 10px;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  margin: 50px 100px;
+}
+.App .lampButton-container {
+  display: flex;
+}
+.App .lampButton-container .button-light {
+  border: 2px solid #526D82;
+}
+.App .lampButton-container .button-light svg {
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+}
+.App .settingLights-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}/*# sourceMappingURL=App.css.map */
