@@ -6,7 +6,7 @@ import BrightSlider from "./BrightSlider";
 import TempSlider from "./TempSlider";
 import "./scss/App.scss";
 
-import { model, bulbs, apiKey } from "./data";
+import { model, bulbs, apiKey } from "./config";
 
 function App() {
 
