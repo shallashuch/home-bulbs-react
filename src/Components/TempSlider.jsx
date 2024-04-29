@@ -5,7 +5,8 @@ import {
   faTemperatureEmpty,
   faTemperatureFull,
 } from "@fortawesome/free-solid-svg-icons";
-import { model, bulbs, apiKey } from "./config";
+// import { model, bulbs, apiKey } from "./config";
+import { model, bulbs, apiKey } from "./data";
 
 function TempSlider(props) {
   const [positionTemp, setPositionTemp] = useState(6500);

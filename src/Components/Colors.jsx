@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { colorsRGB } from "./RGB";
-import { model, bulbs, apiKey } from "./config";
+// import { model, bulbs, apiKey } from "./config";
+import { model, bulbs, apiKey } from "./data";
 
 
 function Colors(props) {

@@ -6,35 +6,39 @@ import BrightSlider from "./BrightSlider";
 import TempSlider from "./TempSlider";
 import "./scss/App.scss";
 
-import { model, bulbs, apiKey } from "./config";
+// import { model, bulbs, apiKey } from "./config";
+import { model, bulbs, apiKey } from "./data";
 
 function App() {
-
+  //bulbs state: active, brightness and color
   let [lampStates, setLampStates] = useState({
     lamp1: { isOn: false, brightness: 100, color: { r: 255, g: 255, b: 255 } },
     lamp2: { isOn: false, brightness: 100, color: { r: 255, g: 255, b: 255 } },
     lamp3: { isOn: false, brightness: 100, color: { r: 255, g: 255, b: 255 } },
   });
+  // current active lamp
   const [activeLamp, setActiveLamp] = useState("lamp1");
+  //current room selected
   const [selectedRoom, setSelectedRoom] = useState("lamp1");
 
   useEffect(() => {
+    // Asyncronous function to fetch data from API call
     const fetchLampState = async (lampKey) => {
-
       const deviceId = bulbs[lampKey].device;
-      
-      const apiURL = `https://developer-api.govee.com/v1/devices/state?device=${encodeURIComponent(deviceId)}&model=${model}`;
+
+      const apiURL = `https://developer-api.govee.com/v1/devices/state?device=${encodeURIComponent(
+        deviceId
+      )}&model=${model}`;
       try {
         const response = await axios.get(apiURL, {
           headers: { "Govee-API-Key": apiKey },
         });
-
-        // Transform array of object in single object
+        // get properties for every bulb in single object
         const { properties } = response.data.data;
         const newState = properties.reduce((acc, property) => {
           return { ...acc, ...property };
         }, {});
-
+        //update specific lamp state
         setLampStates((prevStates) => ({
           ...prevStates,
           [lampKey]: {
@@ -45,15 +49,17 @@ function App() {
           },
         }));
       } catch (error) {
-        console.error(`Errore nel recupero dello stato per ${lampKey}:`, error);
+        console.error(`Error fetching state for ${lampKey}:`, error);
       }
     };
 
-    // Esegue fetchLampState per ogni lampada
-    Object.keys(bulbs).forEach((bulb) => {fetchLampState(bulb)});
+    // do fetchLampState for each lamp
+    Object.keys(bulbs).forEach((bulb) => {
+      fetchLampState(bulb);
+    });
   }, []);
 
-  // toggle lamp-button to set active lamps
+  // toggle lamp-button to set active lamp
   function toggleButton(lampId) {
     const currentState = lampStates[lampId].isOn;
 
@@ -67,6 +73,8 @@ function App() {
       },
     }));
 
+    // Api call
+
     const lampData = {
       device: bulbs[lampId].device,
       model: model,
@@ -76,8 +84,6 @@ function App() {
       },
     };
 
-    // Api call
-
     const apiURL = `https://developer-api.govee.com/v1/devices/control`;
     const headers = {
       "Content-Type": "application/json",
@@ -86,11 +92,11 @@ function App() {
 
     axios
       .put(apiURL, lampData, { headers })
-      .then(response => {
+      .then((response) => {
         console.log(`API call successful for ${lampId}:`, response.data);
       })
       .catch((error) => {
-        console.error("Errore nella chiamata API:", error);
+        console.error("Error:", error);
       });
   }
 

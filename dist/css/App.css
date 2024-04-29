@@ -1,5 +1,5 @@
 .colorPicker {
-  background-color: rgb(233, 231, 231);
+  background-color: #ead7bb;
   padding: 30px 20px;
   width: -moz-fit-content;
   width: fit-content;
@@ -8,19 +8,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 100px;
 }
 .colorPicker #paletteIcon {
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   text-align: center;
+  color: #113946;
 }
 .colorPicker .Colors {
   margin-top: 30px;
-  display: none;
+  height: 130px;
+  overflow: scroll;
 }
 .colorPicker .Colors .colorChoice-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
   row-gap: 20px;
   -moz-column-gap: 20px;
        column-gap: 20px;
@@ -30,185 +33,318 @@
   height: 50px;
   width: 50px;
   cursor: pointer;
-  border: 1px solid black;
+  border: 1px solid #113946;
 }
 .colorPicker .Colors .colorChoice-container .single-color-container:active {
-  border: 1px solid rgb(232, 237, 226);
+  border: 1px solid #bca37f;
 }
 .colorPicker .Colors .colorChoice-container #zero {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 .colorPicker .Colors .colorChoice-container #one {
-  background-color: #F8FCFB;
+  background-color: #f8fcfb;
 }
 .colorPicker .Colors .colorChoice-container #two {
-  background-color: #FFFBEB;
+  background-color: #fffbeb;
 }
 .colorPicker .Colors .colorChoice-container #three {
-  background-color: #FFFDCB;
+  background-color: #fffdcb;
 }
 .colorPicker .Colors .colorChoice-container #four {
-  background-color: #FFFC9B;
+  background-color: #fffc9b;
 }
 .colorPicker .Colors .colorChoice-container #five {
-  background-color: #F5DD61;
+  background-color: #f5dd61;
 }
 .colorPicker .Colors .colorChoice-container #six {
-  background-color: #FFC374;
+  background-color: #ffc374;
 }
 .colorPicker .Colors .colorChoice-container #seven {
-  background-color: #FFA33C;
+  background-color: #ffa33c;
 }
 .colorPicker .Colors .colorChoice-container #eight {
-  background-color: #EC8F5E;
+  background-color: #ec8f5e;
 }
 .colorPicker .Colors .colorChoice-container #nine {
-  background-color: #EBC49F;
+  background-color: #ebc49f;
 }
 .colorPicker .Colors .colorChoice-container #ten {
-  background-color: #E5C287;
+  background-color: #e5c287;
 }
 .colorPicker .Colors .colorChoice-container #eleven {
-  background-color: #C6A969;
+  background-color: #c6a969;
 }
 .colorPicker .Colors .colorChoice-container #twelve {
-  background-color: #FFE6E6;
+  background-color: #ffe6e6;
 }
 .colorPicker .Colors .colorChoice-container #thirteen {
-  background-color: #FFBE98;
+  background-color: #ffbe98;
 }
 .colorPicker .Colors .colorChoice-container #fourteen {
-  background-color: #EA906C;
+  background-color: #ea906c;
 }
 .colorPicker .Colors .colorChoice-container #fifteen {
-  background-color: #FFC0D9;
+  background-color: #ffc0d9;
 }
 .colorPicker .Colors .colorChoice-container #sixteen {
-  background-color: #FC819E;
+  background-color: #fc819e;
 }
 .colorPicker .Colors .colorChoice-container #seventeen {
-  background-color: #FF90BC;
+  background-color: #ff90bc;
 }
 .colorPicker .Colors .colorChoice-container #eighteen {
-  background-color: #9F70FD;
+  background-color: #9f70fd;
 }
 .colorPicker .Colors .colorChoice-container #nineteen {
-  background-color: #7F27FF;
+  background-color: #7f27ff;
 }
 .colorPicker .Colors .colorChoice-container #twenty {
-  background-color: #492E87;
+  background-color: #492e87;
 }
 .colorPicker .Colors .colorChoice-container #twentyone {
-  background-color: #FF6868;
+  background-color: #ff6868;
 }
 .colorPicker .Colors .colorChoice-container #twentytwo {
-  background-color: #BF3131;
+  background-color: #bf3131;
 }
 .colorPicker .Colors .colorChoice-container #twentythree {
-  background-color: #9A031E;
+  background-color: #9a031e;
 }
 .colorPicker .Colors .colorChoice-container #twentyfour {
-  background-color: #C5EBAA;
+  background-color: #c5ebaa;
 }
 .colorPicker .Colors .colorChoice-container #twentyfive {
-  background-color: #79AC78;
+  background-color: #79ac78;
 }
 .colorPicker .Colors .colorChoice-container #twentysix {
-  background-color: #294B29;
+  background-color: #294b29;
 }
 .colorPicker .Colors .colorChoice-container #twentyseven {
-  background-color: #C8FFE0;
+  background-color: #c8ffe0;
 }
 .colorPicker .Colors .colorChoice-container #twentyeight {
-  background-color: #96E9C6;
+  background-color: #96e9c6;
 }
 .colorPicker .Colors .colorChoice-container #twentynine {
-  background-color: #15F5BA;
+  background-color: #15f5ba;
 }
 .colorPicker .Colors .colorChoice-container #thirty {
-  background-color: #9AD0C2;
+  background-color: #9ad0c2;
 }
 .colorPicker .Colors .colorChoice-container #thirtyone {
-  background-color: #2D9596;
+  background-color: #2d9596;
 }
 .colorPicker .Colors .colorChoice-container #thirtytwo {
   background-color: #265073;
 }
 .colorPicker .Colors .colorChoice-container #thirtythree {
-  background-color: #67C6E3;
+  background-color: #67c6e3;
 }
 .colorPicker .Colors .colorChoice-container #thirtyfour {
-  background-color: #378CE7;
+  background-color: #378ce7;
 }
 .colorPicker .Colors .colorChoice-container #thirtyfive {
-  background-color: #5356FF;
+  background-color: #5356ff;
 }
 .colorPicker .Colors .colorChoice-container #thirtysix {
-  background-color: #DFA878;
+  background-color: #dfa878;
 }
 .colorPicker .Colors .colorChoice-container #thirtyseven {
-  background-color: #ECB159;
+  background-color: #ecb159;
 }
 .colorPicker .Colors .colorChoice-container #thirtyeight {
-  background-color: #B67352;
-}
-.colorPicker .Colors.visible {
-  display: block;
-}
-.colorPicker .Colors.hidden {
-  display: none;
+  background-color: #b67352;
 }
 
+.Slider {
+  width: 450px;
+}
 .Slider .brightness-Slider {
-  background-color: rgb(233, 231, 231);
-  padding: 30px 20px;
-  margin-left: 50px;
+  background-color: #ead7bb;
+  padding: 30px 10px;
   border-radius: 20px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 100px;
 }
 .Slider .brightness-Slider .icons {
   height: 30px;
   width: 30px;
+  color: #113946;
 }
 .Slider .brightness-Slider #range {
   cursor: pointer;
   margin: 0px 10px;
+  width: 200px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: transparent;
+}
+.Slider .brightness-Slider #range::-webkit-slider-runnable-track {
+  background: #113946;
+  height: 8px;
+  border-radius: 4px;
+}
+.Slider .brightness-Slider #range::-moz-range-track {
+  background: #113946;
+  height: 8px;
+  border-radius: 4px;
+}
+.Slider .brightness-Slider #range::-ms-track {
+  background: #113946;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+}
+.Slider .brightness-Slider #range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -6px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #bca37f;
+  border: 2px solid #113946;
+  cursor: pointer;
+}
+.Slider .brightness-Slider #range::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #bca37f;
+  border: 2px solid #113946;
+  cursor: pointer;
+}
+.Slider .brightness-Slider #range::-ms-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #bca37f;
+  border: 2px solid #113946;
+  cursor: pointer;
 }
 .Slider .temperature-Slider {
-  background-color: rgb(233, 231, 231);
-  padding: 30px 20px;
-  margin-left: 50px;
-  margin-top: 50px;
+  background-color: #ead7bb;
+  padding: 30px 10px;
   border-radius: 20px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
 }
 .Slider .temperature-Slider .icons {
   height: 30px;
   width: 30px;
+  color: #113946;
 }
 .Slider .temperature-Slider #range {
   cursor: pointer;
   margin: 0px 10px;
+  width: 200px;
+  background-color: #113946;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: transparent;
+}
+.Slider .temperature-Slider #range::-webkit-slider-runnable-track {
+  background: #113946;
+  height: 8px;
+  border-radius: 4px;
+}
+.Slider .temperature-Slider #range::-moz-range-track {
+  background: #113946;
+  height: 8px;
+  border-radius: 4px;
+}
+.Slider .temperature-Slider #range::-ms-track {
+  background: #113946;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+}
+.Slider .temperature-Slider #range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -6px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #bca37f;
+  border: 2px solid #113946;
+  cursor: pointer;
+}
+.Slider .temperature-Slider #range::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #bca37f;
+  border: 2px solid #113946;
+  cursor: pointer;
+}
+.Slider .temperature-Slider #range::-ms-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #bca37f;
+  border: 2px solid #113946;
+  cursor: pointer;
 }
 
 .App {
   width: 100vw;
   height: 100vh;
-  margin: 50px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(17, 57, 70, 0.2);
+  padding: 80px 0;
 }
-.App .lampButton-container {
+.App .room-container {
   display: flex;
 }
-.App .lampButton-container .button-light {
-  border: 2px solid #526D82;
+.App .room-container .room-item {
+  padding: 20px;
+  border: 2px solid #BCA37F;
+  border-bottom: 0px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 20px;
+  color: #113946;
+  font-size: 18px;
+  font-weight: bold;
 }
-.App .lampButton-container .button-light svg {
+.App .folder-container {
+  background-color: #fff2d8;
+  border: 2px solid #bca37f;
+  border-radius: 20px;
+  padding: 30px;
+  width: 1000px;
+}
+.App .folder-container .firstRow-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50px 0px;
+}
+.App .folder-container .firstRow-container .lampButton-container {
+  display: flex;
+  margin-left: 100px;
+}
+.App .folder-container .firstRow-container .lampButton-container .button-light {
+  border: 2px solid #EAD7BB;
+  padding: 20px;
+  border-radius: 50%;
+}
+.App .folder-container .firstRow-container .lampButton-container .button-light svg {
   height: 200px;
   width: 200px;
   padding: 10px;
+  color: #113946;
 }
-.App .settingLights-container {
+.App .folder-container .settingLights-container {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
+  margin: 100px 0px 50px 0px;
 }/*# sourceMappingURL=App.css.map */

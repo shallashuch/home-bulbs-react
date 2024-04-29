@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import { model, bulbs, apiKey } from "./config";
+// import { model, bulbs, apiKey } from "./config";
+import { model, bulbs, apiKey } from "./data";
 
 function BrightSlider(props) {
   const [positionBright, setPositionBright] = useState(props.brightness);
@@ -12,11 +13,9 @@ function BrightSlider(props) {
     setPositionBright(props.brightness);
   }, [props.brightness]);
 
-  console.log(props.brightness, "props.bright");
   // handle change in bright
   function handleBrightChange(event) {
     const brightnessValue = parseInt(event.target.value);
-    console.log(brightnessValue, "brightnessValue");
     setPositionBright(brightnessValue);
 
     const lampId = props.lampId;
@@ -29,8 +28,6 @@ function BrightSlider(props) {
         value: brightnessValue,
       },
     };
-
-    console.log(positionBright, "positionBright");
 
     const apiURL = `https://developer-api.govee.com/v1/devices/control`;
     const headers = {
