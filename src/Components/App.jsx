@@ -4,10 +4,11 @@ import LampButton from "./LampButton";
 import ColorPicker from "./ColorPicker";
 import BrightSlider from "./BrightSlider";
 import TempSlider from "./TempSlider";
+import RoomItem from "./RoomItem";
 import "./scss/App.scss";
 
-// import { model, bulbs, apiKey } from "./config";
-import { model, bulbs, apiKey } from "./data";
+import { model, bulbs, apiKey } from "./config";
+// import { model, bulbs, apiKey } from "./data";
 
 function App() {
   //bulbs state: active, brightness and color
@@ -20,9 +21,11 @@ function App() {
   const [activeLamp, setActiveLamp] = useState("lamp1");
   //current room selected
   const [selectedRoom, setSelectedRoom] = useState("lamp1");
+  // set timer to avoid many requests
+  const [isTimerActive, setIsTimerActive] = useState(false);
 
   useEffect(() => {
-    // Asyncronous function to fetch data from API call
+    // asyncronous function to fetch data from API call
     const fetchLampState = async (lampKey) => {
       const deviceId = bulbs[lampKey].device;
 
@@ -59,45 +62,58 @@ function App() {
     });
   }, []);
 
+  // set timer with timeout
+  function activateTimer() {
+    setIsTimerActive(true);
+    setTimeout(() => setIsTimerActive(false), 4000);
+  }
+
   // toggle lamp-button to set active lamp
   function toggleButton(lampId) {
     const currentState = lampStates[lampId].isOn;
 
-    setActiveLamp(lampId);
+    //if time is active set lamp status and make API call
+    if (!isTimerActive) {
+      setActiveLamp(lampId);
 
-    setLampStates((prevStates) => ({
-      ...prevStates,
-      [lampId]: {
-        ...prevStates[lampId],
-        isOn: !currentState,
-      },
-    }));
+      setLampStates((prevStates) => ({
+        ...prevStates,
+        [lampId]: {
+          ...prevStates[lampId],
+          isOn: !currentState,
+        },
+      }));
 
-    // Api call
+      // API call to update the bulbs: turn them on/off
+      const lampData = {
+        device: bulbs[lampId].device,
+        model: model,
+        cmd: {
+          name: "turn",
+          value: currentState ? "off" : "on",
+        },
+      };
 
-    const lampData = {
-      device: bulbs[lampId].device,
-      model: model,
-      cmd: {
-        name: "turn",
-        value: currentState ? "off" : "on",
-      },
-    };
+      const apiURL = `https://developer-api.govee.com/v1/devices/control`;
+      const headers = {
+        "Content-Type": "application/json",
+        "Govee-API-Key": apiKey,
+      };
 
-    const apiURL = `https://developer-api.govee.com/v1/devices/control`;
-    const headers = {
-      "Content-Type": "application/json",
-      "Govee-API-Key": apiKey,
-    };
+      axios
+        .put(apiURL, lampData, { headers })
+        .then((response) => {
+          console.log(`API call successful for ${lampId}:`, response.data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
 
-    axios
-      .put(apiURL, lampData, { headers })
-      .then((response) => {
-        console.log(`API call successful for ${lampId}:`, response.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      activateTimer();
+    } else {
+      console.log("Too many requests. Please wait before toggling again.");
+      alert("Please wait few seconds before trying again..");
+    }
   }
 
   // button to select room set active his lamp
@@ -119,30 +135,20 @@ function App() {
   return (
     <div className="App">
       <div className="room-container">
-        <div
-          className="room-item"
-          onClick={() => toggleRoom("lamp1")}
-          style={getRoomStyle("lamp1")}
-        >
-          Lampacina
-        </div>
-        <div
-          className="room-item"
-          onClick={() => toggleRoom("lamp2")}
-          style={getRoomStyle("lamp2")}
-        >
-          Garage Lamp
-        </div>
-        <div
-          className="room-item"
-          onClick={() => toggleRoom("lamp3")}
-          style={getRoomStyle("lamp3")}
-        >
-          Lampadone
-        </div>
+        {/* ROOMS */}
+        {Object.keys(bulbs).map((lamp) => (
+          <RoomItem
+            key={lamp}
+            roomId={lamp}
+            roomName={bulbs[lamp].name}
+            toggleRoom={toggleRoom}
+            getRoomStyle={getRoomStyle}
+          />
+        ))}
       </div>
       <div className="folder-container">
         <div className="firstRow-container">
+          {/* LAMP ICON-BUTTON */}
           <div className="lampButton-container">
             {activeLamp && lampStates[activeLamp] && (
               <LampButton
@@ -153,14 +159,18 @@ function App() {
               />
             )}
           </div>
+          {/* COLOR PICKER */}
           <div className="colorPicker-container">
             <ColorPicker
               lampId={activeLamp}
               key={`${activeLamp}-colorPicker`}
               color={lampStates[activeLamp].color}
+              isTimerActive={isTimerActive}
+              activateTimer={activateTimer}
             />
           </div>
         </div>
+        {/* TEMPERATURE AND BRIGHTNESS SLIDERS */}
         {activeLamp && lampStates[activeLamp] && (
           <div className="settingLights-container">
             <BrightSlider

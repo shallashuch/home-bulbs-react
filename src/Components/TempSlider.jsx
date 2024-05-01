@@ -5,20 +5,31 @@ import {
   faTemperatureEmpty,
   faTemperatureFull,
 } from "@fortawesome/free-solid-svg-icons";
-// import { model, bulbs, apiKey } from "./config";
-import { model, bulbs, apiKey } from "./data";
+import { model, bulbs, apiKey } from "./config";
+// import { model, bulbs, apiKey } from "./data";
 
 function TempSlider(props) {
+  //current temperature
   const [positionTemp, setPositionTemp] = useState(6500);
+  //set timer to change temperature
+  const [sliderTimer, setSliderTimer] = useState(null);
 
+  //handle temperature change
   function handleTempChange(event) {
     const temperatureValue = parseInt(event.target.value);
-    console.log(temperatureValue, "temperatureValue");
     setPositionTemp(temperatureValue);
 
     const lampId = props.lampId;
-    console.log(positionTemp, "positionTemp");
 
+    //remove previous timer 
+    if (sliderTimer) {
+      clearTimeout(sliderTimer);
+    }
+
+    // new timer to update brightness after 1.5 sec
+    const newTimeout = setTimeout(() => {
+
+    //API call
     const lampTempData = {
       device: bulbs[lampId].device,
       model: model,
@@ -45,6 +56,8 @@ function TempSlider(props) {
       .catch((error) => {
         console.error("Error updating temperature:", error);
       });
+    }, 1500);
+    setSliderTimer(newTimeout);
   }
 
   return (
