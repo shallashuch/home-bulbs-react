@@ -42,8 +42,6 @@ function App() {
           return { ...acc, ...property };
         }, {});
 
-        console.log(newState, "newState");
-        console.log(response.data.data.properties[3], "COLOR");
         //update specific lamp state
         setLampStates((prevStates) => ({
           ...prevStates,
@@ -56,7 +54,6 @@ function App() {
               : { ...prevStates[lampKey].color },
           },
         }));
-        console.log(lampStates, "LAMPSTATES");
       } catch (error) {
         console.error(`Error fetching state for ${lampKey}:`, error);
       }

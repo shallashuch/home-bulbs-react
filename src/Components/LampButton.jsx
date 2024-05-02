@@ -7,12 +7,13 @@ function LampButton(props) {
 
   // update rbg when props.color changes
   useEffect(() => {
-    setRgbColor(getRgbColor(props.color));
-    console.log("Color changed:", props.color);
+    if (props.color) {
+      setRgbColor(getRgbColor(props.color));
+    }
   }, [props.color]);
 
   function getRgbColor(color) {
-    return `rgb(${color.r}, ${color.g}, ${color.b})`;
+    return `rgb(${color?.r ?? 255}, ${color?.g?? 255}, ${color?.b?? 255})`;
   }
   
   return (
