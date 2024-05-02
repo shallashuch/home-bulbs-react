@@ -65,7 +65,7 @@ function App() {
     Object.keys(bulbs).forEach((bulb) => {
       fetchLampState(bulb);
     });
-  }, []);
+  }, [lampStates]);
 
   // set timer with timeout
   function activateTimer() {
