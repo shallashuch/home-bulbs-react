@@ -12,5 +12,5 @@ export const bulbs = {
   lamp3: {
     name: process.env.REACT_APP_BULB_LAMP3_NAME,
     device: process.env.REACT_APP_BULB_LAMP3_DEVICE,
-  }
+  },
 };

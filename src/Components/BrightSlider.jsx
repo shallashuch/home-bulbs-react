@@ -30,7 +30,6 @@ function BrightSlider(props) {
 
     // new timer to update brightness after 1.5 sec
     const newTimeout = setTimeout(() => {
-
       //API call
       const lampBrightData = {
         device: bulbs[lampId].device,

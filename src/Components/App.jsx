@@ -41,6 +41,9 @@ function App() {
         const newState = properties.reduce((acc, property) => {
           return { ...acc, ...property };
         }, {});
+
+        console.log(newState, "newState");
+        console.log(response.data.data.properties[3], "COLOR");
         //update specific lamp state
         setLampStates((prevStates) => ({
           ...prevStates,
@@ -48,14 +51,16 @@ function App() {
             ...prevStates[lampKey],
             isOn: newState.powerState === "on",
             brightness: newState.brightness || prevStates[lampKey].brightness,
-            color: newState.color || prevStates[lampKey].color,
+            color: newState.color
+              ? { ...newState.color }
+              : { ...prevStates[lampKey].color },
           },
         }));
+        console.log(lampStates, "LAMPSTATES");
       } catch (error) {
         console.error(`Error fetching state for ${lampKey}:`, error);
       }
     };
-
     // do fetchLampState for each lamp
     Object.keys(bulbs).forEach((bulb) => {
       fetchLampState(bulb);
@@ -69,7 +74,7 @@ function App() {
   }
 
   // toggle lamp-button to set active lamp
-  function toggleButton(lampId) {
+  function toggleButton(lampId, newColor) {
     const currentState = lampStates[lampId].isOn;
 
     //if time is active set lamp status and make API call
@@ -81,6 +86,7 @@ function App() {
         [lampId]: {
           ...prevStates[lampId],
           isOn: !currentState,
+          color: newColor,
         },
       }));
 
@@ -132,6 +138,51 @@ function App() {
       : { backgroundColor: "#EAD7BB" };
   };
 
+  //function to update props.color when color selected changes
+  const handleColorChange = (lampId, newColor) => {
+    if (!isTimerActive) {
+      setLampStates((prevStates) => ({
+        ...prevStates,
+        [lampId]: {
+          ...prevStates[lampId],
+          color: newColor,
+        },
+      }));
+      updateLampColorInAPI(lampId, newColor);
+    } else {
+      console.log("Too many requests. Please wait before toggling again.");
+      alert("Please wait few seconds before trying again..");
+    }
+  };
+  //API call to change lamp color
+  const updateLampColorInAPI = (lampId, { r, g, b }) => {
+    const lampData = {
+      device: bulbs[lampId].device,
+      model: model,
+      cmd: {
+        name: "color",
+        value: { r, g, b },
+      },
+    };
+
+    const apiURL = `https://developer-api.govee.com/v1/devices/control`;
+    const headers = {
+      "Content-Type": "application/json",
+      "Govee-API-Key": apiKey,
+    };
+
+    axios
+      .put(apiURL, lampData, { headers })
+      .then((response) => {
+        console.log(
+          `Color change API call successful for ${lampId}:`,
+          response
+        );
+        activateTimer();
+      })
+      .catch((error) => console.error("Error updating color:", error));
+  };
+
   return (
     <div className="App">
       <div className="room-container">
@@ -167,6 +218,7 @@ function App() {
               color={lampStates[activeLamp].color}
               isTimerActive={isTimerActive}
               activateTimer={activateTimer}
+              onColorChange={handleColorChange}
             />
           </div>
         </div>

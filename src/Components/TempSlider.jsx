@@ -21,41 +21,40 @@ function TempSlider(props) {
 
     const lampId = props.lampId;
 
-    //remove previous timer 
+    //remove previous timer
     if (sliderTimer) {
       clearTimeout(sliderTimer);
     }
 
     // new timer to update brightness after 1.5 sec
     const newTimeout = setTimeout(() => {
+      //API call
+      const lampTempData = {
+        device: bulbs[lampId].device,
+        model: model,
+        cmd: {
+          name: "colorTem",
+          value: temperatureValue,
+        },
+      };
 
-    //API call
-    const lampTempData = {
-      device: bulbs[lampId].device,
-      model: model,
-      cmd: {
-        name: "colorTem",
-        value: temperatureValue,
-      },
-    };
+      const apiURL = `https://developer-api.govee.com/v1/devices/control`;
+      const headers = {
+        "Content-Type": "application/json",
+        "Govee-API-Key": apiKey,
+      };
 
-    const apiURL = `https://developer-api.govee.com/v1/devices/control`;
-    const headers = {
-      "Content-Type": "application/json",
-      "Govee-API-Key": apiKey,
-    };
-
-    axios
-      .put(apiURL, lampTempData, { headers })
-      .then((response) => {
-        console.log(
-          `Temperature updated successfully for lamp ${props.lampId}:`,
-          response.data
-        );
-      })
-      .catch((error) => {
-        console.error("Error updating temperature:", error);
-      });
+      axios
+        .put(apiURL, lampTempData, { headers })
+        .then((response) => {
+          console.log(
+            `Temperature updated successfully for lamp ${props.lampId}:`,
+            response.data
+          );
+        })
+        .catch((error) => {
+          console.error("Error updating temperature:", error);
+        });
     }, 1500);
     setSliderTimer(newTimeout);
   }

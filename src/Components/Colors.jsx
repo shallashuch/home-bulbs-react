@@ -1,52 +1,12 @@
-import React, {useState} from "react";
-import axios from "axios";
+import React from "react";
 import { colorsRGB } from "./RGB";
-import { model, bulbs, apiKey } from "./config";
-// import { model, bulbs, apiKey } from "./data";
 
 function Colors(props) {
-  // set timer to avoid many requests
-  const [isTimerActive, setIsTimerActive] = useState(false);
-
-  // set timer with timeout
-  function activateTimer() {
-    setIsTimerActive(true);
-    setTimeout(() => setIsTimerActive(false), 4000);
-  }
-
-  // handle color change
+  // handle color change with the props function
   function handleColorSelection(indexColor) {
     const { r, g, b } = colorsRGB[indexColor];
-
-    const lampId = props.lampId;
-
-    if (!isTimerActive) {
-      //API call to change lamp color
-      const lampColorsData = {
-        device: bulbs[lampId].device,
-        model: model,
-        cmd: {
-          name: "color",
-          value: { r, g, b },
-        },
-      };
-
-      const apiURL = `https://developer-api.govee.com/v1/devices/control`;
-      const headers = {
-        "Content-Type": "application/json",
-        "Govee-API-Key": apiKey,
-      };
-
-      axios
-        .put(apiURL, lampColorsData, { headers })
-        .then((response) => console.log("Color set successfully:", response))
-        .catch((error) => console.log("Error setting color:", error));
-
-      activateTimer();
-    } else {
-      console.log("Too many requests. Please wait before toggling again.");
-      alert("Please wait few seconds before trying again..");
-    }
+    const newColor = { r, g, b };
+    props.onColorChange(props.lampId, newColor);
   }
 
   //variable for every single color available

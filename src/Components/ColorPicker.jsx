@@ -7,7 +7,13 @@ function ColorPicker(props) {
   return (
     <div className="colorPicker">
       <FontAwesomeIcon icon={faPalette} aria-hidden="true" id="paletteIcon" />
-      <Colors lampId={props.lampId} color={props.color}/>
+      <Colors
+        lampId={props.lampId}
+        color={props.color}
+        isTimerActive={props.isTimerActive}
+        activateTimer={props.activateTimer}
+        onColorChange={props.onColorChange}
+      />
     </div>
   );
 }

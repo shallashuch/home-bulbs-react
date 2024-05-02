@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 
 function LampButton(props) {
-  let rgbColor = `rgb(${props.color.r}, ${props.color.g}, ${props.color.b})`;
+  const [rgbColor, setRgbColor] = useState(getRgbColor(props.color));
 
+  // update rbg when props.color changes
+  useEffect(() => {
+    setRgbColor(getRgbColor(props.color));
+    console.log("Color changed:", props.color);
+  }, [props.color]);
+
+  function getRgbColor(color) {
+    return `rgb(${color.r}, ${color.g}, ${color.b})`;
+  }
+  
   return (
     <div className="LampButton">
       <button
