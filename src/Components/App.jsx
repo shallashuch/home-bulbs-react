@@ -65,6 +65,7 @@ function App() {
     Object.keys(bulbs).forEach((bulb) => {
       fetchLampState(bulb);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // set timer with timeout
